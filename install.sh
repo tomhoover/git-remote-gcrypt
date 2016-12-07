@@ -15,11 +15,11 @@ install_v()
 
 install_v git-remote-gcrypt "$DESTDIR$prefix/bin" 755
 
-if command -v rst2man >/dev/null
+if command -v rst2man.py >/dev/null
 then
 	trap 'rm -f git-remote-gcrypt.1.gz' EXIT
-	verbose rst2man ./README.rst | gzip -9 > git-remote-gcrypt.1.gz
+	verbose rst2man.py ./README.rst | gzip -9 > git-remote-gcrypt.1.gz
 	install_v git-remote-gcrypt.1.gz "$DESTDIR$prefix/share/man/man1" 644
 else
-	echo "'rst2man' not found, man page not installed" >&2
+	echo "'rst2man.py' not found, man page not installed" >&2
 fi
